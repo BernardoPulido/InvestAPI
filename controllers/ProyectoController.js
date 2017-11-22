@@ -75,7 +75,7 @@ exports.updateProyecto = function(req, res, next){
     console.log(req.body);
 
     Proyectos.findById(req.params.id,function (err, proyecto) {
-        if(err){
+        if(err || !proyecto){
             res.status(500).jsonp({error:'500', error_message:err.message});
         }else{
             req.body.titulo?proyecto.titulo = req.body.titulo:null;

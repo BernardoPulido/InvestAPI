@@ -57,7 +57,7 @@ exports.updateInstitucion = function(req, res, next){
     console.log(req.body);
 
     Instituciones.findById(req.params.id,function (err, inst) {
-        if(err){
+        if(err || !inst){
             res.status(500).jsonp({error:'500', error_message:err.message});
         }else{
             req.body.institucion?inst.institucion = req.body.institucion:null;
