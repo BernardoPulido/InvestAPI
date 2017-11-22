@@ -55,7 +55,7 @@ exports.updateInvestigador = function(req, res, next){
     console.log(req.body);
 
     Investigadores.findById(req.params.id,function (err, inv) {
-        if(err){
+        if(err || !inv){
             res.status(500).jsonp({error:'500', error_message:err.message});
         }else{
             req.body.nombre?inv.nombre = req.body.nombre:null;
